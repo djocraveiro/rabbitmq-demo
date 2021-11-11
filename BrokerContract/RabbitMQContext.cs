@@ -8,7 +8,7 @@ using System.Text;
 
 namespace BrokerContract
 {
-    internal class RabbitMQContext : IBrokerContext
+    internal sealed class RabbitMQContext : IBrokerContext
     {
         #region Properties
 

@@ -2,7 +2,7 @@
 using System;
 using System.IO;
 
-namespace SensorService
+namespace AlertService
 {
     public static class Program
     {
@@ -10,16 +10,14 @@ namespace SensorService
         {
             IConfiguration config = ReadConfiguration(args);
 
-            var service = new Service(config, new TemperatureReader(config));
-            var task = service.Start();
+            var service = new Service(config, new TemperatureAnalyser(config));
+            service.Start();
 
             Console.WriteLine("Press any key to exit...");
             Console.ReadKey();
 
             service.Stop();
             Console.WriteLine("Stopping...");
-
-            task.Wait();
         }
 
         private static IConfiguration ReadConfiguration(string[] args)

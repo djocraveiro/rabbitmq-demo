@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SensorService", "SensorServ
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrokerContract", "BrokerContract\BrokerContract.csproj", "{0E009650-B18B-4035-8968-FB45689BC692}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlertService", "AlertService\AlertService.csproj", "{7658F4B0-0098-45F4-922D-3D3E2288BB93}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{0E009650-B18B-4035-8968-FB45689BC692}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E009650-B18B-4035-8968-FB45689BC692}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E009650-B18B-4035-8968-FB45689BC692}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7658F4B0-0098-45F4-922D-3D3E2288BB93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7658F4B0-0098-45F4-922D-3D3E2288BB93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7658F4B0-0098-45F4-922D-3D3E2288BB93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7658F4B0-0098-45F4-922D-3D3E2288BB93}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

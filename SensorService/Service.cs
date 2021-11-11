@@ -7,29 +7,31 @@ using System.Threading.Tasks;
 
 namespace SensorService
 {
-    internal class Service
+    public class Service
     {
         #region Properties
 
+        const string publishRouter = "sensor-data";
+
         private readonly string _connectionString;
         private readonly string _appId;
-        private readonly string _publichTo;
+        private readonly int _readInterval;
         private CancellationTokenSource _tokenSrc;
 
-        private readonly Random _random;
+        private readonly ITemperatureReader<float> _temperatureReader;
 
         #endregion
 
 
         #region Constructors
 
-        public Service(IConfiguration config)
+        public Service(IConfiguration config, ITemperatureReader<float> temperatureReader)
         {
             _connectionString = config.GetConnectionString("RabbitMQ");
             _appId = config.GetValue<string>("AppId");
-            _publichTo = config.GetValue<string>("PublishTo");
+            _readInterval = config.GetValue<int>("ReadInterval", 3000);
 
-            _random = new Random();
+            _temperatureReader = temperatureReader;
         }
 
         #endregion
@@ -37,7 +39,7 @@ namespace SensorService
 
         #region Public Methods
 
-        public Task Run()
+        public Task Start()
         {
             _tokenSrc = new CancellationTokenSource();
 
@@ -78,18 +80,16 @@ namespace SensorService
 
         private async Task Run(IBrokerContext brokerContext, CancellationToken cancelToken)
         {
-            brokerContext.DeclareQueue(_publichTo);
-            brokerContext.DeclareForwardRouter(_publichTo);
-            brokerContext.BindQueueToRouter(queueName: _publichTo, routerName: _publichTo);
+            brokerContext.DeclareForwardRouter(publishRouter);
 
             while (!cancelToken.IsCancellationRequested)
             {
-                var message = ReadTemperature();
-                brokerContext.Publish(message, _publichTo);
+                var reading = ReadTemperature();
+                brokerContext.Publish(reading, publishRouter);
 
-                WriteLog(message.ToJsonString());
+                WriteLog(reading.ToJsonString());
 
-                await Task.Delay(3000);
+                await Task.Delay(_readInterval);
             }
         }
 
@@ -98,7 +98,7 @@ namespace SensorService
             return new TemperatureReading()
             {
                 Timestamp = DateTime.UtcNow,
-                Value = _random.Next(-5, 50)
+                Value = _temperatureReader.ReadNext()
             };
         }
 
