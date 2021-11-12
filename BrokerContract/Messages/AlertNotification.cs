@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 
 namespace BrokerContract.Messages
@@ -23,7 +24,10 @@ namespace BrokerContract.Messages
 
         public string ToJsonString()
         {
-            return JsonConvert.SerializeObject(this);
+            var json = JObject.FromObject(this);
+            json["typeName"] = Type.ToString();
+
+            return JsonConvert.SerializeObject(json);
         }
     }
 }

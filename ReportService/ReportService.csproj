@@ -3,8 +3,8 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>AlertService</RootNamespace>
-    <Product>AlertService</Product>
+    <RootNamespace>ReportService</RootNamespace>
+    <Product>ReportService</Product>
     <Authors>djoc</Authors>
     <Company>-</Company>
     <Copyright>Copyright © 2021</Copyright>

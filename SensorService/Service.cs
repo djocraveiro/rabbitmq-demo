@@ -59,6 +59,9 @@ namespace SensorService
                 finally
                 {
                     brokerContext?.Dispose();
+
+                    _tokenSrc.Dispose();
+                    _tokenSrc = null;
                 }
             },
             _tokenSrc.Token);
@@ -69,7 +72,6 @@ namespace SensorService
             if (_tokenSrc != null && !_tokenSrc.IsCancellationRequested)
             {
                 _tokenSrc.Cancel();
-                _tokenSrc.Dispose();
             }
         }
 
