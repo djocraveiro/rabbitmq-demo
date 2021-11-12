@@ -22,7 +22,8 @@ namespace AlertService.Rules
             {
                 Timestamp = input.Timestamp,
                 Type = NotificationType.Warning,
-                Message = $"{input.Value} - It's hot."
+                Value = input.Value,
+                Message = "It's hot."
             };
         }
     }

@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrokerContract", "BrokerCon
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlertService", "AlertService\AlertService.csproj", "{7658F4B0-0098-45F4-922D-3D3E2288BB93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportService", "ReportService\ReportService.csproj", "{F9A1938A-E531-46DB-80A0-CEDEB27B1414}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReportService", "ReportService\ReportService.csproj", "{F9A1938A-E531-46DB-80A0-CEDEB27B1414}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{48E02D87-4DDE-42F7-984B-359CB2FC60DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{F9A1938A-E531-46DB-80A0-CEDEB27B1414}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9A1938A-E531-46DB-80A0-CEDEB27B1414}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F9A1938A-E531-46DB-80A0-CEDEB27B1414}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48E02D87-4DDE-42F7-984B-359CB2FC60DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48E02D87-4DDE-42F7-984B-359CB2FC60DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48E02D87-4DDE-42F7-984B-359CB2FC60DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48E02D87-4DDE-42F7-984B-359CB2FC60DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

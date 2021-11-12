@@ -19,6 +19,9 @@ namespace BrokerContract.Messages
         [JsonProperty("type")]
         public NotificationType Type { get; set; }
 
+        [JsonProperty("val")]
+        public float Value { get; set; }
+
         [JsonProperty("msg")]
         public string Message { get; set; }
 

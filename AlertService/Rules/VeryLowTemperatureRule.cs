@@ -22,7 +22,8 @@ namespace AlertService.Rules
             {
                 Timestamp = input.Timestamp,
                 Type = NotificationType.Critical,
-                Message = $"{input.Value} - It's freezing."
+                Value = input.Value,
+                Message = "It's freezing."
             };
         }
     }
