@@ -49,6 +49,8 @@ namespace SensorService
 
                 try
                 {
+                    Console.WriteLine($"AppId:{_appId}");
+
                     brokerContext = BrokerContextFactory.CreateContext(_connectionString, _appId);
                     await Run(brokerContext, _tokenSrc.Token);
                 }

@@ -48,6 +48,8 @@ namespace AlertService
 
             try
             {
+                Console.WriteLine($"AppId:{_appId}");
+
                 _brokerContext = BrokerContextFactory.CreateContext(_connectionString, _appId);
 
                 _brokerContext.DeclareForwardRouter(publishRouter);

@@ -13,11 +13,24 @@ namespace Client
             var service = new Application(config);
             service.Run();
 
-            Console.WriteLine("Press any key to exit...");
-            Console.ReadKey();
+            WaitForExitCommand();
 
             service.Finish();
             Console.WriteLine("Stopping...");
+        }
+
+        public static void WaitForExitCommand()
+        {
+            while (true)
+            {
+                Console.WriteLine("Press 'e' to exit...");
+                var key = Console.ReadKey();
+
+                if (key.Key == ConsoleKey.E)
+                {
+                    break;
+                }
+            }
         }
 
         private static IConfiguration ReadConfiguration(string[] args)

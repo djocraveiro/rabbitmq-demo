@@ -13,11 +13,24 @@ namespace AlertService
             var service = new Service(config, new TemperatureAnalyser(config));
             service.Start();
 
-            Console.WriteLine("Press any key to exit...");
-            Console.ReadKey();
+            WaitForExitCommand();
 
             service.Stop();
             Console.WriteLine("Stopping...");
+        }
+
+        public static void WaitForExitCommand()
+        {
+            while (true)
+            {
+                Console.WriteLine("Press 'e' to exit...");
+                var key = Console.ReadKey();
+
+                if (key.Key == ConsoleKey.E)
+                {
+                    break;
+                }
+            }
         }
 
         private static IConfiguration ReadConfiguration(string[] args)

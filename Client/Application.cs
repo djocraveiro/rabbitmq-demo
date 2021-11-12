@@ -46,6 +46,8 @@ namespace Client
 
             try
             {
+                Console.WriteLine($"AppId:{_appId}");
+
                 _brokerContext = BrokerContextFactory.CreateContext(_connectionString, _appId);
 
                 _brokerContext.DeclareQueue(alertQueue);
@@ -96,8 +98,8 @@ namespace Client
         {
             var builder = new StringBuilder();
             builder.AppendLine("======= Temperature. Report =====================");
-            builder.AppendLine($"[{report.StartDate.ToString("s")} - {report.EndDate.ToString("s")}]");
-            builder.AppendLine($"Max:{report.MaxValue} \tAvg:{report.AvgValue} \tMin:{report.MinValue}");
+            builder.AppendLine($"[{report.StartDate.ToLocalTime().ToString("s")} - {report.EndDate.ToLocalTime().ToString("s")}]");
+            builder.AppendLine($"Max:{report.MaxValue} \t\tAvg:{report.AvgValue} \t\tMin:{report.MinValue}");
             builder.AppendLine("=================================================");
 
             Console.WriteLine(builder.ToString());
