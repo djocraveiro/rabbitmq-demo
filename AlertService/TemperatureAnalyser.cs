@@ -68,7 +68,8 @@ namespace AlertService
                 {
                     Timestamp = input.Timestamp,
                     Type = NotificationType.Info,
-                    Message = $"{input.Value} - temperature is normal."
+                    Value = input.Value,
+                    Message = "temperature is normal."
                 };
 
                 return _lastNotification;

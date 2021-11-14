@@ -97,7 +97,7 @@ namespace Client
         private bool OnReportMessageReceived(TemperatureReport report)
         {
             var builder = new StringBuilder();
-            builder.AppendLine("======= Temperature. Report =====================");
+            builder.AppendLine("======= Temperature Report =====================");
             builder.AppendLine($"[{report.StartDate.ToLocalTime().ToString("s")} - {report.EndDate.ToLocalTime().ToString("s")}]");
             builder.AppendLine($"Max:{report.MaxValue} \t\tAvg:{report.AvgValue} \t\tMin:{report.MinValue}");
             builder.AppendLine("=================================================");
