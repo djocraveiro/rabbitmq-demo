@@ -32,7 +32,7 @@ namespace ReportService
             _queue.Enqueue(reading);
         }
 
-        public TemperatureReport Build()
+        public (TemperatureReport Report, int MessageCount) Build()
         {
             var reportDate = DateTime.UtcNow;
             var readingList = new List<TemperatureReading>();
@@ -55,15 +55,21 @@ namespace ReportService
                 }
             }
 
-            return new TemperatureReport()
+            var report = new TemperatureReport()
             {
-                Timestamp = reportDate,
-                MaxValue = readingList.Max(x => x.Value),
-                AvgValue = readingList.Average(x => x.Value),
-                MinValue = readingList.Min(x => x.Value),
-                StartDate = readingList.Min(x => x.Timestamp),
-                EndDate = readingList.Max(x => x.Timestamp)
+                Timestamp = reportDate
             };
+
+            if (readingList.Count > 0)
+            {
+                report.MaxValue = readingList.Max(x => x.Value);
+                report.AvgValue = readingList.Average(x => x.Value);
+                report.MinValue = readingList.Min(x => x.Value);
+                report.StartDate = readingList.Min(x => x.Timestamp);
+                report.EndDate = readingList.Max(x => x.Timestamp);
+            }
+
+            return (report, readingList.Count);
         }
 
         public void Clear()

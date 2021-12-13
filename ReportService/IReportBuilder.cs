@@ -4,7 +4,7 @@
     {
         void Add(TIn input);
 
-        TOut Build();
+        (TOut Report, int MessageCount) Build();
 
         void Clear();
     }

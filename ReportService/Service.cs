@@ -55,7 +55,10 @@ namespace ReportService
 
             try
             {
+                TimeSpan reportInterval = TimeSpan.FromMilliseconds(_timer.Interval);
+
                 Console.WriteLine($"AppId:{_appId}");
+                Console.WriteLine($"Generates a report every {reportInterval.TotalSeconds}s");
 
                 _brokerContext = BrokerContextFactory.CreateContext(_connectionString, _appId);
 
@@ -113,10 +116,17 @@ namespace ReportService
             {
                 WriteLog("Generating report...");
 
-                var report = _reportBuilder.Build();
+                var (report, messageCount) = _reportBuilder.Build();
 
-                _brokerContext.Publish(report, publishRouter);
-                WriteLog(report.ToJsonString());
+                if (messageCount > 0)
+                {
+                    _brokerContext.Publish(report, publishRouter);
+                    WriteLog(report.ToJsonString());
+                }
+                else
+                {
+                    WriteLog("Empty report: there are no messages.");
+                }
             }
             catch (Exception ex)
             {
